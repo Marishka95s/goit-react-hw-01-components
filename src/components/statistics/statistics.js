@@ -4,7 +4,7 @@ import StatisticItem from './statistic-item';
 
 const Statistics = ({ title, items }) => (
     <section className="statistics">
-    <h2 className="title">{title}</h2>
+    {title && <h2 className="title">{title}</h2>}
 
     <ul className="stat-list">
     {items.map(({ id, label, percentage }) => (
@@ -17,8 +17,11 @@ const Statistics = ({ title, items }) => (
     )}
     </ul>
     </section>
-    );
+);
 
+Statistics.defaultProps = {
+      title: '',
+}
 Statistics.propTypes = {
   title: PropTypes.string,
   items: PropTypes.arrayOf(
